@@ -1,0 +1,315 @@
+:root {
+    --bg: #f6f8fa;
+    --sidebar-bg: #ffffff;
+    --main-bg: #ffffff;
+    --text: #24292f;
+    --muted: #57606a;
+    --border: #d0d7de;
+    --accent: #0969da;
+    --accent-hover: #0550ae;
+    --status-connected: #1a7f37;
+    --status-disconnected: #cf222e;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", Helvetica, Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+}
+
+.app {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 280px;
+    min-width: 200px;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.sidebar-header h1 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.base-dir {
+    margin: 0;
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tree {
+    flex: 1;
+    overflow: auto;
+    padding: 8px 0;
+}
+
+.tree ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 16px;
+}
+
+.tree > ul {
+    padding-left: 0;
+}
+
+.tree li {
+    line-height: 1.6;
+}
+
+.tree .node {
+    display: flex;
+    align-items: center;
+    padding: 4px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 0 6px;
+    font-size: 14px;
+    user-select: none;
+}
+
+.tree .node:hover {
+    background: #f3f4f6;
+}
+
+.tree .node.active {
+    background: #ddf4ff;
+    color: var(--accent);
+    font-weight: 500;
+}
+
+.tree .node .icon {
+    width: 18px;
+    text-align: center;
+    margin-right: 6px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.tree .node .label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tree .children {
+    display: none;
+}
+
+.tree .children.expanded {
+    display: block;
+}
+
+.tree .empty {
+    padding: 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* Main */
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--main-bg);
+    min-width: 0;
+}
+
+.toolbar {
+    height: 50px;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+}
+
+#current-file {
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.status {
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.status.connected {
+    color: var(--status-connected);
+    background: #dafbe1;
+}
+
+.status.disconnected {
+    color: var(--status-disconnected);
+    background: #ffebe9;
+}
+
+.preview {
+    flex: 1;
+    overflow: auto;
+    padding: 32px 40px;
+    max-width: 980px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.placeholder {
+    color: var(--muted);
+    text-align: center;
+    margin-top: 100px;
+    font-size: 16px;
+}
+
+/* Markdown 内容样式 */
+.markdown-body {
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+    margin-top: 32px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--text);
+}
+
+.markdown-body h1 { font-size: 32px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+.markdown-body h2 { font-size: 24px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+.markdown-body h3 { font-size: 20px; }
+.markdown-body h4 { font-size: 16px; }
+
+.markdown-body p {
+    margin: 0 0 16px;
+}
+
+.markdown-body a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.markdown-body a:hover {
+    text-decoration: underline;
+}
+
+.markdown-body code {
+    background: rgba(175, 184, 193, 0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 85%;
+}
+
+.markdown-body pre {
+    background: #f6f8fa;
+    border-radius: 8px;
+    padding: 16px;
+    overflow: auto;
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
+}
+
+.markdown-body pre code {
+    background: transparent;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.markdown-body blockquote {
+    margin: 0 0 16px;
+    padding: 0 16px;
+    color: var(--muted);
+    border-left: 4px solid var(--border);
+}
+
+.markdown-body ul,
+.markdown-body ol {
+    margin-bottom: 16px;
+    padding-left: 24px;
+}
+
+.markdown-body li + li {
+    margin-top: 4px;
+}
+
+.markdown-body table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.markdown-body th,
+.markdown-body td {
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.markdown-body th {
+    background: #f6f8fa;
+    font-weight: 600;
+}
+
+.markdown-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+.markdown-body hr {
+    border: 0;
+    border-top: 1px solid var(--border);
+    margin: 24px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        position: absolute;
+        left: -280px;
+        top: 0;
+        bottom: 0;
+        z-index: 10;
+        transition: left 0.2s;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+}

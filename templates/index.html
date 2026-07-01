@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD Watcher - 本地 Markdown 预览</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>📘 MD Watcher</h1>
+                <p class="base-dir" title="{{ base_dir }}">{{ base_dir }}</p>
+            </div>
+            <nav id="tree" class="tree">
+                <div class="empty">加载目录中…</div>
+            </nav>
+        </aside>
+        <main class="main">
+            <div id="toolbar" class="toolbar">
+                <span id="current-file">未选择文件</span>
+                <span id="status" class="status disconnected">未连接</span>
+            </div>
+            <article id="preview" class="preview">
+                <div class="placeholder">请从左侧选择一个 Markdown 文件</div>
+            </article>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

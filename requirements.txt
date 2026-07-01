@@ -1,0 +1,4 @@
+flask>=3.0
+flask-sock>=0.7
+watchdog>=6.0
+markdown>=3.6
