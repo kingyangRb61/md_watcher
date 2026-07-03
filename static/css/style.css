@@ -33,16 +33,26 @@ html, body {
 /* Sidebar */
 .sidebar {
     width: 280px;
-    min-width: 200px;
+    min-width: 280px;
     background: var(--sidebar-bg);
     border-right: 1px solid var(--border);
     display: flex;
     flex-direction: column;
+    transition: width 0.25s ease, min-width 0.25s ease, border-width 0.25s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.sidebar.collapsed {
+    width: 0;
+    min-width: 0;
+    border-right-width: 0;
 }
 
 .sidebar-header {
     padding: 16px;
     border-bottom: 1px solid var(--border);
+    position: relative;
 }
 
 .sidebar-header h1 {
@@ -58,6 +68,68 @@ html, body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.btn-collapse {
+    position: absolute;
+    top: 14px;
+    right: 12px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--muted);
+    padding: 2px 6px;
+}
+
+.btn-collapse:hover {
+    background: #f3f4f6;
+    border-color: var(--border);
+}
+
+.btn-expand {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 50;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.btn-expand:hover {
+    background: #f6f8fa;
+}
+
+.btn-expand.hidden {
+    display: none;
+}
+
+.sidebar-toolbar {
+    display: flex;
+    gap: 8px;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.sidebar-toolbar button {
+    background: #f6f8fa;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.sidebar-toolbar button:hover {
+    background: #f3f4f6;
+    border-color: var(--muted);
 }
 
 .tree {
@@ -128,6 +200,69 @@ html, body {
     text-align: center;
     color: var(--muted);
     font-size: 14px;
+}
+
+.tree .node .rename-input {
+    flex: 1;
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 14px;
+    outline: none;
+}
+
+/* Context Menu */
+.context-menu {
+    position: fixed;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    padding: 4px 0;
+    min-width: 140px;
+    z-index: 100;
+}
+
+.context-menu.hidden {
+    display: none;
+}
+
+.context-menu-item {
+    padding: 8px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    color: var(--text);
+}
+
+.context-menu-item:hover {
+    background: #f3f4f6;
+}
+
+.context-menu-item.danger {
+    color: var(--status-disconnected);
+}
+
+.context-menu-item.danger:hover {
+    background: #ffebe9;
+}
+
+/* Toast */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #24292f;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.toast.hidden {
+    display: none;
 }
 
 /* Main */

@@ -14,12 +14,20 @@
             <div class="sidebar-header">
                 <h1>📘 MD Watcher</h1>
                 <p class="base-dir" title="{{ base_dir }}">{{ base_dir }}</p>
+                <button id="btn-collapse" class="btn-collapse" title="收起侧边栏">◀</button>
+            </div>
+            <div class="sidebar-toolbar">
+                <button id="btn-open-folder" title="打开文件夹">📂</button>
+                <button id="btn-refresh" title="刷新">🔄</button>
             </div>
             <nav id="tree" class="tree">
                 <div class="empty">加载目录中…</div>
             </nav>
         </aside>
+        <div id="context-menu" class="context-menu hidden"></div>
+        <div id="toast" class="toast hidden"></div>
         <main class="main">
+            <button id="btn-expand" class="btn-expand hidden" title="展开侧边栏">▶</button>
             <div id="toolbar" class="toolbar">
                 <span id="current-file">未选择文件</span>
                 <span id="status" class="status disconnected">未连接</span>
